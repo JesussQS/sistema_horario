@@ -24,11 +24,11 @@ public class Administrador {
     private Integer id;
 
     @NotNull
-    @NotBlank
-    @Email
+    @NotBlank(message = "El campo es obligatorio")
+    @Email(message = "Formato incorrecto")
     private String email;
 
-    @NotBlank
+    @NotBlank(message = "El campo es obligatorio")
     @NotNull
     private String password;
 
