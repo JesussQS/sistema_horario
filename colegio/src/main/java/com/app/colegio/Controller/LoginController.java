@@ -38,13 +38,18 @@ public class LoginController {
             Administrador admin=administradorService.findByEmailAndPassword(administrador.getEmail(), administrador.getPassword());
             if(admin!=null){
                 session.setAttribute("usuario", admin.getEmail());
+                return "redirect:/asignatura/listar";
             }else{
                 model.put("administrador",administrador);
                 model.put("errorAutenticacion","Correo o contraseña incorrecta");
                 return "home/ingresar";
             }
         }
-        
-        return "home/index";
+    }
+
+    @GetMapping("/cerrar")
+    public String salir(HttpSession session){
+        session.removeAttribute("usuario");
+        return "redirect:/";
     }
 }

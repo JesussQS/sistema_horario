@@ -8,6 +8,96 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </head>
 <body>
+    <div th:fragment="sidebar">
+        <link rel="stylesheet" th:href="@{/css/admin.css}">
+        <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+        
+        <nav class="sidebar open border-end">
+            <header>
+                <div class="image-text">
+                    <span class="image">
+                        <img  src="https://scontent.flim38-1.fna.fbcdn.net/v/t39.30808-6/348570546_908603387032428_1220882809468786453_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeEfwdyec8EuynM2d-OOmYhwut2r9yeX3fm63av3J5fd-TkowACq_-_3D-jEds_e1M_EDsyR0RRfmEAmX3h2vbG-&_nc_ohc=QA63hG6g69gAX_58qOw&_nc_ht=scontent.flim38-1.fna&oh=00_AfApbPrd-1h2bhu_yY0y4sHtsDBuY0epi0SSk_BzPxzAXg&oe=65318AB6">
+                    </span>
+    
+                    <div class="text logo-text">
+                        <span class="name">IE PEDRO</span>
+                        <span class="name">RUIZ GALLO</span>
+                    </div>
+                </div>
+    
+            </header>
+    
+            <div class="menu-bar">
+                <div class="menu">
+                    <li class="search-box">
+                        <i class='bx bx-search icon'></i>
+                        <input type="text" placeholder="Buscar">
+                    </li>
+    
+                    <ul class="menu-links">
+                        <li class="nav-link">
+                            <a th:href="@{/asignatura/listar}">
+                                <i class='bx bx-food-menu icon' ></i>
+                                <span class="text nav-text">Asignatura</span>
+                            </a>
+                        </li>
+    
+                        <li class="nav-link">
+                            <a href="#">
+                                <i class='bx bx-male-female icon' ></i>
+                                <span class="text nav-text">Docente</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+    
+                <div class="bottom-content">
+                    <li class="">
+                        <a th:href="@{/acceder/cerrar}">
+                            <i class='bx bx-log-out icon' ></i>
+                            <span class="text nav-text">Salir</span>
+                        </a>
+                    </li>
+    
+                    <li class="mode">
+                        <div class="sun-moon">
+                            <i class='bx bx-moon icon moon'></i>
+                            <i class='bx bx-sun icon sun'></i>
+                        </div>
+                        <span class="mode-text text">Dark mode</span>
+    
+                        <div class="toggle-switch">
+                            <span class="switch"></span>
+                        </div>
+                    </li>
+                    
+                </div>
+            </div>
+        </nav>
+    
+        <script>
+            body = document.querySelector('body'),
+            sidebar = body.querySelector('nav'),
+            toggle = body.querySelector(".toggle"),
+            searchBtn = body.querySelector(".search-box"),
+            modeSwitch = body.querySelector(".toggle-switch"),
+            modeText = body.querySelector(".mode-text");
 
+            searchBtn.addEventListener("click" , () =>{
+                sidebar.classList.remove("close");
+            })
+    
+            modeSwitch.addEventListener("click" , () =>{
+                body.classList.toggle("dark");
+                
+                if(body.classList.contains("dark")){
+                    modeText.innerText = "Light mode";
+                }else{
+                    modeText.innerText = "Dark mode";
+                    
+                }
+            });
+        </script>
+    </div>
 </body>
 </html>
